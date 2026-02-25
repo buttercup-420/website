@@ -32,7 +32,6 @@
 
                 <p>I like meeting new people. If you have something cool or just want to send me blue and red pictures, I'm at <a href="mailto:ru.uppalapati@gmail.com" class="home-link">ru.uppalapati@gmail.com</a>.</p>
 
-                <p class="home-quote">"It's good to be important, but it's more important to be good." <span>— Dwayne "The Rock" Johnson, adapted by me</span></p>
             </div>
 
             <div id="panel-writing" class="home-panel">
@@ -61,6 +60,7 @@
             </nav>
         </div>
 
+        <p class="home-quote">"It's good to be important, but it's more important to be good." <span>— Dwayne "The Rock" Johnson, adapted by me</span></p>
     </div>
 
     <script>
@@ -71,6 +71,8 @@
             var panel = document.getElementById('panel-' + id);
             if (panel) panel.classList.add('active');
             if (el) el.classList.add('active');
+            var quote = document.querySelector('.home-quote');
+            if (quote) quote.style.display = (id === 'about') ? '' : 'none';
         }
         if (window.location.hash === '#writing') {
             showPanel('writing', null, null);
