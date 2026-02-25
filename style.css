@@ -118,6 +118,23 @@ a { color: var(--fg); text-decoration: none; }
 .home-page {
     min-height: 100vh;
     padding: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-quote {
+    margin-top: auto;
+    padding-top: 60px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--red);
+}
+.home-quote span {
+    font-style: normal;
+    color: var(--fg);
 }
 
 .home-top {
@@ -700,8 +717,10 @@ a { color: var(--fg); text-decoration: none; }
 }
 
 .writing-page figcaption p {
-    font-size: 16px;
-    line-height: 24px;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
     display: inline;
 }
 
