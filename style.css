@@ -115,57 +115,29 @@ a { color: var(--fg); text-decoration: none; }
    HOME PAGE
    ============================================= */
 
-.page { display: none; min-height: 100vh; }
-.page.active { display: block; }
-
-.home-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr auto;
+.home-page {
     min-height: 100vh;
+    padding: 60px;
 }
 
-.home-left {
-    padding: 48px 40px;
+.home-top {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    align-items: flex-start;
 }
 
-.home-name {
-    font-family: var(--mono);
-    font-weight: 300;
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--fg);
+.home-photo {
+    display: block;
+    width: 160px;
+    height: auto;
+    object-fit: cover;
 }
-
-.home-nav {
-    margin-top: 2em;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8em;
-}
-.home-nav a {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--fg-muted);
-    text-decoration: none;
-    transition: color 0.2s;
-}
-.home-nav a:hover,
-.home-nav a.active { color: var(--fg); }
 
 .home-social {
     font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0 40px 48px;
-    align-self: end;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
 }
 .home-social a {
     color: var(--fg-muted);
@@ -173,42 +145,67 @@ a { color: var(--fg); text-decoration: none; }
     transition: color 0.2s;
 }
 .home-social a:hover { color: var(--fg); }
-.home-social span { margin: 0 10px; color: var(--border); }
+.home-social span { margin: 0 8px; color: var(--fg-muted); }
 
-.home-right {
-    padding: 0 60px 0 0;
-    display: flex;
-    align-items: center;
-    grid-row: 1 / -1;
-    grid-column: 2;
+.home-body {
+    margin-top: 80px;
+    max-width: 560px;
 }
 
-.home-content { max-width: 480px; }
+.home-name {
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--fg);
+    margin-bottom: 2em;
+}
 
 .home-panel { display: none; }
 .home-panel.active { display: block; }
 
 .home-panel p {
-    margin-bottom: 1.5em;
-    opacity: 0;
-    animation: riseIn 0.7s ease forwards;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--fg);
+    margin-bottom: 1.4em;
 }
-.home-panel p:nth-child(1) { animation-delay: 0.1s; }
-.home-panel p:nth-child(2) { animation-delay: 0.2s; }
-.home-panel p:nth-child(3) { animation-delay: 0.3s; }
 .home-panel p:last-child { margin-bottom: 0; }
 
-@keyframes riseIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
+.home-link {
+    color: var(--fg);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: color 0.2s;
 }
+.home-link:hover { color: var(--fg-muted); }
+
+.home-nav {
+    margin-top: 2.5em;
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+.home-nav a {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.home-nav a:hover,
+.home-nav a.active { color: var(--fg); }
 
 /* Writing cards */
 .writing-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-    justify-content: flex-end;
 }
 .writing-card {
     display: block;
@@ -227,14 +224,17 @@ a { color: var(--fg); text-decoration: none; }
 }
 .w-caption .w-title {
     display: block;
+    font-family: var(--mono);
     font-style: italic;
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: 300;
     line-height: 1.4;
 }
 .w-caption .w-date {
     display: block;
     font-family: var(--mono);
     font-size: 10px;
+    font-weight: 300;
     color: var(--fg-muted);
     margin-top: 3px;
 }
@@ -514,11 +514,11 @@ a { color: var(--fg); text-decoration: none; }
     max-width: 520px;
     font-size: 40px;
     line-height: 45px;
-    font-weight: 400;
+    font-weight: 300;
     text-transform: lowercase;
     padding-bottom: 25px;
     margin: 0 auto 25px auto;
-    font-family: "EB Garamond", Palatino, serif;
+    font-family: var(--mono);
 }
 
 /* ── Sections ── */
@@ -826,30 +826,15 @@ body.writing-page > footer p a:hover {
    ============================================= */
 
 @media (max-width: 800px) {
-    .home-layout {
-        grid-template-columns: 1fr;
-        min-height: 100vh;
-        grid-template-rows: auto 1fr auto;
+    .home-page {
+        padding: 40px 28px;
     }
-    .home-left {
-        padding: 36px 28px 0;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+    .home-photo {
+        width: 130px;
     }
-    .home-social {
-        padding: 0 28px 36px;
+    .home-body {
+        margin-top: 60px;
     }
-    .home-right {
-        grid-row: auto;
-        grid-column: auto;
-    }
-    .home-nav { flex-direction: row; margin-top: 0; gap: 1.2em; }
-    .home-right {
-        padding: 8vh 28px 12vh;
-        align-items: flex-start;
-    }
-    .home-content { max-width: 100%; }
     .mb-grid { columns: 2; }
     .moodboard-page { padding: 24px; }
 }
