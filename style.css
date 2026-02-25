@@ -73,7 +73,8 @@ a { color: var(--fg); text-decoration: none; }
 
 /* Shared back-link and page-end styles */
 .back-link {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: 0.06em;
@@ -81,7 +82,8 @@ a { color: var(--fg); text-decoration: none; }
     color: var(--fg-muted);
     text-decoration: none;
     transition: color 0.2s;
-    margin-bottom: 6vh;
+    height: 90px;
+    margin-bottom: 0;
 }
 .back-link:hover { color: var(--fg); }
 
@@ -119,6 +121,7 @@ a { color: var(--fg); text-decoration: none; }
 .home-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
     min-height: 100vh;
 }
 
@@ -161,6 +164,8 @@ a { color: var(--fg); text-decoration: none; }
     font-size: 11px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+    padding: 0 40px 48px;
+    align-self: end;
 }
 .home-social a {
     color: var(--fg-muted);
@@ -174,6 +179,8 @@ a { color: var(--fg); text-decoration: none; }
     padding: 0 60px 0 0;
     display: flex;
     align-items: center;
+    grid-row: 1 / -1;
+    grid-column: 2;
 }
 
 .home-content { max-width: 480px; }
@@ -821,13 +828,21 @@ body.writing-page > footer p a:hover {
 @media (max-width: 800px) {
     .home-layout {
         grid-template-columns: 1fr;
-        min-height: auto;
+        min-height: 100vh;
+        grid-template-rows: auto 1fr auto;
     }
     .home-left {
         padding: 36px 28px 0;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+    }
+    .home-social {
+        padding: 0 28px 36px;
+    }
+    .home-right {
+        grid-row: auto;
+        grid-column: auto;
     }
     .home-nav { flex-direction: row; margin-top: 0; gap: 1.2em; }
     .home-right {
