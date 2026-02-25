@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rithu Uppalapati</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HOME -->
+    <div id="page-home" class="page active">
+        <div class="home-layout">
+            <div class="home-left">
+                <div>
+                    <div class="home-name">Rithu Uppalapati</div>
+                    <nav class="home-nav">
+                        <a href="#" class="active" onclick="showPanel('about', this, event)">About Me</a>
+                        <a href="#" onclick="showPanel('writing', this, event)">Writing</a>
+                    </nav>
+                </div>
+                <div class="home-social">
+                    <a href="https://linkedin.com/in/rithusamson" target="_blank">LinkedIn</a>
+                    <span>/</span>
+                    <a href="https://github.com/rithusamson" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="home-right">
+                <div class="home-content">
+                    <div id="panel-about" class="home-panel active">
+                        <p>I'm a machine learning engineer living in New York, though I'll always consider myself a Michigander. I went to the greatest school in the world: the University of Michigan. If that doesn't mean anything to you, Harvard is sometimes called the Michigan of the East.</p>
+
+                        <p><a href="learning.html" class="link-subtle">I love to learn</a>. I can tell you a fact about most things because I never stop reading about how things work, how people think, all of it. Machine learning lets me take those principles and try to recreate them on a computer.</p>
+
+                        <p>My favorite movie trope is the reluctant warrior. My favorite scent is jasmine sambac. I love sunsets and gambling. I'll tell you it's about the math. It's probably about the winning. My favorite color combination is <a href="moodboard.html" class="color-trigger"><span class="c-blue">blue</span> <span class="c-and">and</span> <span class="c-red">red</span></a>.</p>
+
+                        <p>I like meeting new people. If you have something cool or just want to send me blue and red pictures, I'm at <a href="mailto:ru.uppalapati@gmail.com" class="link-subtle">ru.uppalapati@gmail.com</a>.</p>
+                    </div>
+                    <div id="panel-writing" class="home-panel">
+                        <div class="writing-grid">
+                            <a href="writing/sorry_about_it.html" class="writing-card">
+                                <img src="https://hauteliving.com/wp-content/uploads/2010/08/Kim-Kardashian-at-LAVO-2-YR-Anniversary.jpg" alt="Sorry about it.">
+                                <div class="w-caption">
+                                    <span class="w-title">Sorry about it.</span>
+                                    <span class="w-date">Feb 2026</span>
+                                </div>
+                            </a>
+                            <a href="writing/powerpuff_girls.html" class="writing-card">
+                                <img src="images/Gemini_Generated_Image_vzgcu9vzgcu9vzgc.png" alt="The Origin Story of Professor Utonium">
+                                <div class="w-caption">
+                                    <span class="w-title">The Origin Story of Professor Utonium</span>
+                                    <span class="w-date">Feb 2026</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var aboutTop = null;
+        function captureAboutTop() {
+            if (document.getElementById('panel-about').classList.contains('active')) {
+                aboutTop = document.getElementById('panel-about').getBoundingClientRect().top;
+            }
+        }
+        window.addEventListener('load', captureAboutTop);
+        window.addEventListener('resize', captureAboutTop);
+
+        function showPanel(id, el, e) {
+            if (e) e.preventDefault();
+            captureAboutTop();
+            document.querySelectorAll('.home-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.home-nav a').forEach(a => a.classList.remove('active'));
+            document.getElementById('panel-' + id).classList.add('active');
+            var right = document.querySelector('.home-right');
+            if (id === 'writing' && aboutTop !== null) {
+                right.style.alignItems = 'flex-start';
+                right.style.paddingTop = aboutTop + 'px';
+            } else {
+                right.style.alignItems = '';
+                right.style.paddingTop = '';
+            }
+            if (el) el.classList.add('active');
+            else {
+                document.querySelectorAll('.home-nav a').forEach(a => {
+                    if (a.textContent.toLowerCase().includes(id)) a.classList.add('active');
+                });
+            }
+        }
+        if (window.location.hash === '#writing') {
+            showPanel('writing', null, null);
+        }
+    </script>
+</body>
+</html>
