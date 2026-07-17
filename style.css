@@ -145,9 +145,9 @@ a { color: var(--fg); text-decoration: none; }
 
 .home-photo {
     display: block;
-    width: 160px;
+    width: 220px;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .home-social {
@@ -849,7 +849,7 @@ body.writing-page > footer p a:hover {
         padding: 40px 28px;
     }
     .home-photo {
-        width: 130px;
+        width: 180px;
     }
     .home-body {
         margin-top: 60px;
